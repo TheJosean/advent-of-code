@@ -8,6 +8,16 @@ import java.security.MessageDigest
 fun readInput(name: String) = File("src", "$name.txt")
     .readLines()
 
+fun splitList(list: List<String>): List<List<String>> {
+    return list.flatMapIndexed { index, s ->
+        when {
+            index == 0 || index == list.lastIndex -> listOf(index)
+            s.isEmpty() -> listOf(index - 1, index + 1)
+            else -> emptyList()
+        }
+    }.windowed(size = 2, step = 2) { (from, to) -> list.slice(from..to) }
+}
+
 /**
  * Converts string to md5 hash.
  */

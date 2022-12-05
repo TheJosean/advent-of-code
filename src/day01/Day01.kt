@@ -1,17 +1,12 @@
 package day01
 
+import splitList
 import readInput
 
 fun main() {
 
     fun parseData(input: List<String>) =
-        input.flatMapIndexed { index, s ->
-            when {
-                index == 0 || index == input.lastIndex -> listOf(index)
-                s.isEmpty() -> listOf(index - 1, index + 1)
-                else -> emptyList()
-            }
-        }.windowed(size = 2, step = 2) { (from, to) -> input.slice(from..to) }
+        splitList(input)
             .map { elf -> elf.sumOf { it.toInt() } }
 
     fun part1(input: List<String>) = parseData(input).max()
