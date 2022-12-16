@@ -71,7 +71,7 @@ fun main() {
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("/day11/Day11_test")
-    //check(part1(testInput) == 10605L)
+    check(part1(testInput) == 10605L)
     check(part2(testInput) == 2713310158L)
 
     val input = readInput("/day11/Day11")
